@@ -44,7 +44,7 @@ func NewAddressDecoderV2(wm *WalletManager) *AddressDecoderV2 {
 //AddressDecode 地址解析
 func (dec *AddressDecoderV2) AddressDecode(addr string, opts ...interface{}) ([]byte, error) {
 
-	if strings.Index(addr, "epc") != 0 {
+	if strings.Index(addr, "ep") != 0 {
 		return nil, errors.New("invalid address")
 	}
 	decodeHash, err := cosmosTransaction.Bech32Decode(addr)
@@ -68,7 +68,7 @@ func (dec *AddressDecoderV2) AddressEncode(hash []byte, opts ...interface{}) (st
 
 // AddressVerify 地址校验
 func (dec *AddressDecoderV2) AddressVerify(address string, opts ...interface{}) bool {
-	if strings.Index(address, "epc") != 0 {
+	if strings.Index(address, "ep") != 0 {
 		return false
 	}
 	_, err := cosmosTransaction.Bech32Decode(address)
