@@ -198,7 +198,7 @@ func (c *Client) getAccountNumberAndSequence(address string) (int, int, error) {
 		return 0, 0, errors.New("Failed to get address' account number and sequence!")
 	}
 	accountNumber := int(r.Get("result").Get("value").Get("account_number").Uint())
-	sequence := int(r.Get("value").Get("sequence").Uint())
+	sequence := int(r.Get("result").Get("value").Get("sequence").Uint())
 	if accountNumber == 0 {
 		return 0, 0, errors.New("Failed to get account number, or node sync is stoped!")
 	}
